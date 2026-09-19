@@ -11,9 +11,18 @@
   var timelineProgress = document.getElementById("timeline-progress");
 
   function render() {
+    var receptionMaps = weddingData.reception && weddingData.reception.mapsUrl;
     weddingData.events.forEach(function (ev, index) {
       var item = document.createElement("div");
       item.className = "tl-item reveal" + (ev.isMain ? " main-event" : "");
+
+      // Highlight Reception address and add a Maps link if provided in weddingData.reception
+      var isReception = weddingData.reception && (ev.name && ev.name.toLowerCase().indexOf('reception') !== -1 || ev.location && ev.location.toLowerCase().indexOf(weddingData.reception.address.toLowerCase().split(',')[0]) !== -1);
+      var placeHtml = '<p class="tl-place' + (isReception ? ' venue-highlight' : '') + '">' + ev.location + '</p>';
+      if (isReception && receptionMaps) {
+        placeHtml += '<div class="tl-map"><a class="tl-map-btn btn" href="' + receptionMaps + '" target="_blank" rel="noopener noreferrer">View on Google Maps</a></div>';
+      }
+
       item.innerHTML =
         '<span class="tl-index">' + String(index + 1).padStart(2, "0") + "</span>" +
         '<span class="tl-dot" aria-hidden="true"></span>' +
@@ -21,8 +30,9 @@
         '<p class="tl-date">' + ev.date + "</p>" +
         '<h3 class="tl-title">' + ev.name + "</h3>" +
         '<p class="tl-desc">' + ev.description + "</p>" +
-        '<p class="tl-place">' + ev.location + "</p>" +
+        placeHtml +
         '</div>';
+
       timelineEl.appendChild(item);
     });
   }

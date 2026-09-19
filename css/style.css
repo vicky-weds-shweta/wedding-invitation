@@ -228,10 +228,12 @@ a:focus-visible, button:focus-visible{
   background: linear-gradient(90deg, rgba(199,140,86,0.98), rgba(201,166,110,0.98));
   color: var(--white);
   border: none;
-  padding:16px 40px;
+  padding:12px 32px;
   border-radius:28px;
   box-shadow: 0 10px 30px rgba(167,122,86,0.18), 0 2px 6px rgba(0,0,0,0.06);
   transform: translateZ(0);
+  position:relative;
+  overflow:visible;
 }
 .open-btn .btn:hover{ transform: translateY(-3px); box-shadow: 0 16px 36px rgba(167,122,86,0.22); }
 
@@ -241,6 +243,34 @@ a:focus-visible, button:focus-visible{
   100%{ box-shadow: 0 6px 22px rgba(167,122,86,0.10); }
 }
 .open-btn .btn.attention{ animation: pulseSoft 3.6s ease-in-out infinite; }
+
+/* CTA float + ring pulse */
+@keyframes ctaFloat {
+  0%{ transform: translateY(0) scale(1); }
+  50%{ transform: translateY(-6px) scale(1.02); }
+  100%{ transform: translateY(0) scale(1); }
+}
+@keyframes ringPulse {
+  0%{ transform: scale(0.9); opacity:0.28; }
+  70%{ transform: scale(1.8); opacity:0.06; }
+  100%{ transform: scale(2.2); opacity:0; }
+}
+
+.open-btn .btn.attention{ animation: ctaFloat 3.6s ease-in-out infinite; }
+.open-btn .btn.attention::after{
+  content:"";
+  position:absolute;
+  left:50%; top:50%; transform:translate(-50%,-50%);
+  width:60%; height:60%; border-radius:999px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 40%);
+  pointer-events:none; z-index:-1; opacity:0;
+  animation: ringPulse 2.6s ease-in-out infinite;
+}
+
+/* Reduce motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .open-btn .btn.attention, .open-btn .btn.attention::after{ animation:none !important; }
+}
 
 @keyframes coverIn{ to{ opacity:1; transform:translateY(0) scale(1); } }
 
@@ -384,6 +414,14 @@ section{ position:relative; padding: clamp(72px, 12vw, 140px) 0; }
 .tl-item.main-event .tl-dot{ left:-8px; width:23px; height:23px; }
 .tl-item.main-event .tl-title{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); }
 
+.tl-place.venue-highlight{
+  display:inline-block;
+  background: linear-gradient(90deg, rgba(176,213,192,0.10), rgba(252,178,169,0.04));
+  padding:6px 8px; border-radius:8px; font-weight:600; color:var(--charcoal);
+}
+.tl-map{ margin-top:10px; }
+.tl-map-btn{ padding:8px 12px; font-size:0.78rem; border-radius:20px; }
+
 /* ---------- Ceremony feature ---------- */
 #ceremony{
   text-align:center;
@@ -440,6 +478,10 @@ section{ position:relative; padding: clamp(72px, 12vw, 140px) 0; }
   opacity:0.4; cursor:not-allowed; pointer-events:none;
 }
 .venue-hint{ margin-top:14px; font-size:0.76rem; color: var(--taupe); font-style:italic; }
+
+/* Reception highlight: used when reception is in a different city/state */
+.venue-card.reception-card{ margin-top:18px; border-left:4px solid rgba(176,213,192,0.18); padding-left:18px; }
+.venue-address.venue-highlight{ background: linear-gradient(90deg, rgba(176,213,192,0.10), rgba(252,178,169,0.04)); padding:8px 10px; border-radius:8px; display:inline-block; font-weight:600; color:var(--charcoal); }
 
 /* ---------- Gallery ---------- */
 #gallery{ background: linear-gradient(180deg, rgba(243,229,219,0.58), rgba(255,255,255,0.72)); }

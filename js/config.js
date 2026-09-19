@@ -29,6 +29,13 @@ var weddingData = {
     mapsUrl: "https://www.google.com/maps/place/Hotel+Royal+Damyanti+Palace/@23.7993804,79.4524991,17z/data=!3m1!4b1!4m10!3m9!1s0x398201001eda2433:0x96e727abd72ee0f9!5m3!1s2026-11-24!4m1!1i2!8m2!3d23.7993755!4d79.455074!16s%2Fg%2F11xdttwz6t?entry=ttu&g_ep=EgoyMDI2MDkxNS4wIKXMDSoASAFQAw%3D%3D"                                 // <-- paste your Google Maps share link here
   },
 
+  // Optional: separate reception venue (different city/state)
+  reception: {
+    name: "Reception Hall (Patna)",
+    address: "Khushi Marriage Park, Patna, Bihar, India",
+    mapsUrl: "https://www.google.com/maps/place/Khushi+Marriage+Park/@25.572077,85.053691,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a9da6cd41c87:0x2da6efab57ea44f5!8m2!3d25.572077!4d85.053691!16s%2Fg%2F11b7qww3f6!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" // <-- paste Reception Google Maps share link here to enable Maps button
+  },
+
   // -----------------------------------------------------
   // 🗓️ EVENTS — shown on the timeline, in this order
   // -----------------------------------------------------
@@ -67,7 +74,7 @@ var weddingData = {
     {
       name: "Reception",
       date: "30 November 2026",
-      location: "Patna, Bihar",
+      location: "Khushi Marriage Park, Patna, Bihar",
       description: "An evening to celebrate the newly married couple, with family and friends new and old."
     }
   ]

@@ -39,4 +39,23 @@
       openInvitation();
     }
   });
+
+  // Add a gentle attention pulse to the Open Invitation button until interaction
+  try {
+    if (openBtn && !openBtn.classList.contains('attention')) {
+      setTimeout(function () {
+        openBtn.classList.add('attention');
+      }, 900);
+
+      var removeAttention = function () {
+        openBtn.classList.remove('attention');
+      };
+      openBtn.addEventListener('mouseover', removeAttention, { once: true });
+      openBtn.addEventListener('focus', removeAttention, { once: true });
+      openBtn.addEventListener('touchstart', removeAttention, { once: true, passive: true });
+      openBtn.addEventListener('click', removeAttention, { once: true });
+    }
+  } catch (e) {
+    // ignore
+  }
 })();
