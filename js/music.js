@@ -16,6 +16,8 @@
 
   var musicBtn = document.getElementById("music-btn");
   var audio = document.getElementById("bg-audio");
+  // ensure audio loops reliably
+  try{ audio.loop = true; }catch(e){}
   var audioAvailable = true;
 
   audio.addEventListener("error", function () {
