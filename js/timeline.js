@@ -11,15 +11,18 @@
   var timelineProgress = document.getElementById("timeline-progress");
 
   function render() {
-    weddingData.events.forEach(function (ev) {
+    weddingData.events.forEach(function (ev, index) {
       var item = document.createElement("div");
       item.className = "tl-item reveal" + (ev.isMain ? " main-event" : "");
       item.innerHTML =
+        '<span class="tl-index">' + String(index + 1).padStart(2, "0") + "</span>" +
         '<span class="tl-dot" aria-hidden="true"></span>' +
+        '<div class="tl-content">' +
         '<p class="tl-date">' + ev.date + "</p>" +
         '<h3 class="tl-title">' + ev.name + "</h3>" +
         '<p class="tl-desc">' + ev.description + "</p>" +
-        '<p class="tl-place">' + ev.location + "</p>";
+        '<p class="tl-place">' + ev.location + "</p>" +
+        '</div>';
       timelineEl.appendChild(item);
     });
   }
