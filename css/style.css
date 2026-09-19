@@ -135,10 +135,16 @@ a:focus-visible, button:focus-visible{
 
 .cover-inner{
   text-align:center;
-  padding: 44px 24px 40px;
-  max-width:620px;
+  padding: 40px 24px;
+  max-width:560px;
   position:relative;
   z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:60vh;
+  gap:18px;
 }
 
 .monogram{
@@ -207,9 +213,10 @@ a:focus-visible, button:focus-visible{
 }
 
 .open-btn{
-  margin-top:40px;
+  margin-top:28px;
   opacity:0; transform:translateY(10px);
   animation: coverIn 0.9s ease forwards; animation-delay:2.5s;
+  z-index:3;
 }
 
 @keyframes coverIn{ to{ opacity:1; transform:translateY(0) scale(1); } }
