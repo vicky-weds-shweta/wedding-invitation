@@ -53,7 +53,13 @@ var weddingData = {
       description: "A sweet little celebration to mark the beginning of the festivities, shared with our nearest and dearest."
     },
     {
-      name: "Haldi",
+      name: "Haldi & Mehendi Ceremony",
+      date: "25 November 2026",
+      location: "Damoh, Madhya Pradesh",
+      description: "A morning full of turmeric, laughter and blessings, as family and loved ones gather to prepare us for the big day."
+    },
+    {
+      name: "Sangeet",
       date: "25 November 2026",
       location: "Damoh, Madhya Pradesh",
       description: "A morning full of turmeric, laughter and blessings, as family and loved ones gather to prepare us for the big day."
